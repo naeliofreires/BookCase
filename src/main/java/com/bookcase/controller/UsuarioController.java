@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
 @Controller
 public class UsuarioController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public UsuarioController() { }
+    public UsuarioController() {
+    }
 
     // redireciona para a pagina de cadastro do usuário
     @RequestMapping("cadastroUsuario")
@@ -30,11 +34,33 @@ public class UsuarioController {
             this.usuarioRepository.save(user);
             redirectAttributes.addFlashAttribute("mensagem", "Cadastro Realizado com Sucesso!");
             return "redirect:/";
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         redirectAttributes.addFlashAttribute("mensagem", "Erro ao Cadastrar");
         return "redirect:cadastroUsuario";
+    }
+
+    // logando
+    @RequestMapping(value = "efetuar-login", method = RequestMethod.POST)
+    String logar(Usuario usuario, HttpSession session) {
+
+        List<Usuario> user = usuarioRepository.findUsuarioByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+
+        if (user.size() != 0) {
+
+            session.setAttribute("usuario", user.get(0));
+
+            return "redirect:/";
+        }
+        return "redirect:/";
+    }
+
+    // deslogando
+    @RequestMapping("deslogar")
+    String deslogar(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
     }
 
 }
