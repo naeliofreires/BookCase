@@ -29,17 +29,37 @@
         <%--FORMULARIO PARA POSTAR ARTIGO--%>
         <div class="container text-center">
             <h4 class="text-center">{{aplicacao}}</h4>
-            <form class="container">
-                <textarea ng-model="artigo.texto" style="width: 600px"> </textarea>
-                <center>
-                    <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block" style="width: 600px">
-                        Postar Artigo
-                    </button>
-                </center>
-            </form>
+            <form class="container form-group">
+                <input ng-model="artigo.titulo" type="text" class="form-control" placeholder="Titulo">
+                <input ng-model="artigo.resumo" type="text" class="form-control" placeholder="Resumo" maxlength="100">
+                <textarea ng-model="artigo.texto" class="form-control" placeholder="Digite algo aqui.."> </textarea>
+                <br>
+                <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block">
+                    Postar Artigo
+                </button>
 
+            </form>
         </div>
     </c:if>
+
+    <br><br>
+
+
+    <div class="row container" style="margin: 0 auto;">
+        <div ng-repeat="artigo in artigos">
+            <div class="card container " style="width: 20rem; margin: 25px">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{artigo.titulo}}</h4>
+                    <p class="card-text">{{artigo.resumo}}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">{{artigo.nome_autor}} {{artigo.data_publicacao}}</h6>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 </div>
 <%--Imports JS--%>

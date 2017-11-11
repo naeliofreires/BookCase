@@ -31,10 +31,10 @@ public class ArtigoResource {
     @RequestMapping(value="/artigo", method = RequestMethod.POST, produces="application/json")
     public void adicionarArtigo(@RequestBody Artigo artigo, HttpSession session){
 
-
         Usuario user = (Usuario) session.getAttribute("usuario");
 
         artigo.setId_user(user.getId().toString());
+        artigo.setNome_autor(user.getNome());
 
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         artigo.setData_publicacao(formatador.format(new Date()));

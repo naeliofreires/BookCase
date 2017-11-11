@@ -5,18 +5,6 @@ angular.module("bookCase").controller("artigoController", function ($scope, arti
     $scope.aplicacao = "Book Case";
     $scope.artigos = [];
 
-    $scope.adicionarArtigo = function (novo_artigo) {
-        artigoAPI.adicionar_artigo(novo_artigo)
-            .then(
-                function (response) {
-                    delete $scope.novo_artigo;
-                    alert("adicionado!")
-                }, function (response) {
-                    console.log("[adicionarArtigo] Response: " + response);
-                }
-            );
-    };
-
     getArtigos = function () {
         artigoAPI.listarArtigos()
             .then(
@@ -29,7 +17,21 @@ angular.module("bookCase").controller("artigoController", function ($scope, arti
             );
     };
 
-    console.log("Oi");
     getArtigos();
+
+    $scope.adicionarArtigo = function (novo_artigo) {
+        artigoAPI.adicionar_artigo(novo_artigo)
+            .then(
+                function (response) {
+                    delete $scope.novo_artigo;
+                    alert("adicionado!");
+                    getArtigos();
+                }, function (response) {
+                    console.log("[adicionarArtigo] Response: " + response);
+                }
+            );
+    };
+
+
 
 });
