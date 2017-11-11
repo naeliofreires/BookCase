@@ -22,23 +22,26 @@
     </div>
 </c:if>
 
+<div ng-controller="artigoController">
 
-<c:if test="${ usuario != null}">
-    <%--FORMULARIO PARA POSTAR ARTIGO--%>
-    <div class="container text-center"  ng-controller="artigoController">
-        <h4 class="text-center">{{aplicacao}}</h4>
-        <form class="container">
-            <textarea ng-model="artigo.texto" style="width: 600px"> </textarea>
-            <center>
-                <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block" style="width: 600px">
-                    Postar Artigo
-                </button>
-            </center>
-        </form>
 
-    </div>
-</c:if>
+    <c:if test="${ usuario != null}">
+        <%--FORMULARIO PARA POSTAR ARTIGO--%>
+        <div class="container text-center">
+            <h4 class="text-center">{{aplicacao}}</h4>
+            <form class="container">
+                <textarea ng-model="artigo.texto" style="width: 600px"> </textarea>
+                <center>
+                    <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block" style="width: 600px">
+                        Postar Artigo
+                    </button>
+                </center>
+            </form>
 
+        </div>
+    </c:if>
+
+</div>
 <%--Imports JS--%>
 <%--ANGULAR JS--%>
 <script src="/js/angular/angular.min.js" type="text/javascript"></script>
