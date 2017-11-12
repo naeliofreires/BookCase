@@ -26,7 +26,6 @@ public class ArtigoResource {
 
     public ArtigoResource() { }
 
-
     /** adicionar artigo**/
     @RequestMapping(value="/artigo", method = RequestMethod.POST, produces="application/json")
     public void adicionarArtigo(@RequestBody Artigo artigo, HttpSession session){

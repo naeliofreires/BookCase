@@ -1,0 +1,3 @@
+server:
+  port: ${appPort:8800}
+  additionalPorts: 8881,8882
