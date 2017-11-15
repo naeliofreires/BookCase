@@ -7,7 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import(EmbeddedTomcatConfiguration.class)
+@Import({EmbeddedTomcatConfiguration.class})
 public class BookcaseApplication {
 
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

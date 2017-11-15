@@ -6,8 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>BookCase</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
 
@@ -44,21 +43,18 @@
 
     <br><br>
 
-
     <div class="row container" style="margin: 0 auto;">
         <div ng-repeat="artigo in artigos">
-            <div class="card container " style="width: 20rem; margin: 25px">
-                <div class="card-body">
-                    <h4 class="card-title text-center">{{artigo.titulo}}</h4>
-                    <p class="card-text">{{artigo.resumo}}</p>
-                    <h6 class="card-subtitle mb-2 text-muted">{{artigo.nome_autor}} {{artigo.data_publicacao}}</h6>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                <div class="card container " style="width: 20rem; margin: 25px">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{artigo.titulo}}</h4>
+                        <p class="card-text">{{artigo.resumo}}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">{{artigo.nome_autor}} {{artigo.data_publicacao}}</h6>
+                        <a href="#" class="card-link">ler artigo</a>
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
-
 </div>
 
 </div>
@@ -69,7 +65,7 @@
 <script src="/js/controller/bookCaseController.js" type="text/javascript"></script>
 <%--Service--%>
 <script src="/js/service/artigoAPI.js" type="text/javascript"></script>
-<%--Value--%>
-<script src="/js/value/configValue.js" type="text/javascript"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </body>
 </html>
