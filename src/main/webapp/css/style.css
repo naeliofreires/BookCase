@@ -1,0 +1,19 @@
+.div-artigo{
+    border: 1px solid;
+    border-radius: 10px; 
+    color: gray
+}
+
+.resumo{
+    font-style: italic;
+    font-size: 15px;
+}
+
+.data-artigo{
+    color: gray;
+    font-size: 15px;
+}
+
+.texto-artigo{
+    color: black;
+}

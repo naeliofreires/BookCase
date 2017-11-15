@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class ArtigoResource {
+public class ArtigoResource { 
 
     @Autowired
     private ArtigoRepository artigoRepository;

@@ -50,7 +50,7 @@
                         <h4 class="card-title text-center">{{artigo.titulo}}</h4>
                         <p class="card-text">{{artigo.resumo}}</p>
                         <h6 class="card-subtitle mb-2 text-muted">{{artigo.nome_autor}} {{artigo.data_publicacao}}</h6>
-                        <a href="#" class="card-link">ler artigo</a>
+                        <a href="ler-artigo?id={{artigo.id}}" class="card-link">ler artigo</a>
                     </div>
                 </div>
         </div>
