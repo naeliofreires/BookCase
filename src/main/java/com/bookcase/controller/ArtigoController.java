@@ -4,6 +4,7 @@ import com.bookcase.model.Artigo;
 import com.bookcase.model.Usuario;
 import com.bookcase.repository.ArtigoRepository;
 import com.bookcase.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +27,17 @@ public class ArtigoController{
     public ModelAndView lerArtigo(@RequestParam(value="id", required=false) String id){
         
         ModelAndView modelAndView = new ModelAndView("artigo");
+
         Artigo artigo = artigoRepository.findOne(id);
+        
+//        List<Comentario> comentarios = comentarioRepository.findComentarioByIdArtigo(id); // id do artigo
+//        artigo.setComentarios(comentarios);
+
         Usuario usuario = usuarioRepository.findOne(Integer.parseInt(artigo.getId_user()));
+        
         modelAndView.addObject("artigo", artigo);
         modelAndView.addObject("escritor", usuario);
+        
         return modelAndView;
     }
 }

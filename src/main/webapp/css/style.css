@@ -1,5 +1,5 @@
 .div-artigo{
-    border: 1px solid;
+    border: 1px solid whitesmoke;
     border-radius: 10px; 
     color: gray
 }
@@ -16,4 +16,23 @@
 
 .texto-artigo{
     color: black;
+}
+
+#comentario-style{
+    border: 1px solid;
+    border-radius: 10px;
+    /*background-color: whitesmoke;*/
+}
+
+#comentario-caixa{
+    padding-top: 20px;
+}
+
+#textoComentario{
+    font-style: oblique;
+    font-size: 15px;
+}
+
+#tituloComentario{
+    font-style: italic;
 }

@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
-@Document(collection = "artigo")
+@Document(collection = "artigos")
 public class Artigo implements Serializable{
 
     @Id
@@ -28,16 +28,6 @@ public class Artigo implements Serializable{
 
     public Artigo(String id) {
         this.id = id;
-    }
-
-    public Artigo(String id, String id_user, String nome_autor, String titulo, String resumo, String texto, String data_publicacao) {
-        this.id = id;
-        this.id_user = id_user;
-        this.nome_autor = nome_autor;
-        this.titulo = titulo;
-        this.resumo = resumo;
-        this.texto = texto;
-        this.data_publicacao = data_publicacao;
     }
 
     public String getId() {
@@ -95,4 +85,5 @@ public class Artigo implements Serializable{
     public void setData_publicacao(String data_publicacao) {
         this.data_publicacao = data_publicacao;
     }
+
 }
