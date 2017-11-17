@@ -52,7 +52,7 @@ angular.module("bookCase").controller("comentarioController", function ($scope, 
 
     /** ADICIONAR COMENTARIO **/
     $scope.adicionarComentario = function (texto) {
-
+		
         //Montando comentário.
         $scope.comentario = {};
         $scope.comentario.escritor =  $("#userID").val();

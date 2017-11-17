@@ -8,7 +8,9 @@ import java.util.Collection;
 @Entity()
 public class Usuario implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_USUARIO", nullable=false)
     private Integer id;

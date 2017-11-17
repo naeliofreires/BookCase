@@ -9,7 +9,9 @@ import java.io.Serializable;
 @Document(collection = "artigos")
 public class Artigo implements Serializable{
 
-    @Id
+	private static final long serialVersionUID = 1L;
+	
+	@Id
     private String id;
     @NotNull
     private String id_user;
