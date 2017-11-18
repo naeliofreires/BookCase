@@ -22,7 +22,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 public class ArtigoResource { 
-
+	
     @Autowired
     private ArtigoRepository artigoRepository;
 

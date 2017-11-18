@@ -1,10 +1,5 @@
 package com.bookcase.controller;
 
-import com.bookcase.model.Artigo;
-import com.bookcase.model.Usuario;
-import com.bookcase.repository.ArtigoRepository;
-import com.bookcase.repository.UsuarioRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +7,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bookcase.cache.ArtigosCache;
+import com.bookcase.cache.UsuarioCache;
+import com.bookcase.model.Artigo;
+import com.bookcase.model.Usuario;
+
 @Controller
 public class ArtigoController{
 
+	@Autowired
+	private ArtigosCache artigosCache;
+    
     @Autowired
-    private ArtigoRepository artigoRepository;
-
-    @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioCache usuarioCache;
     
     ArtigoController(){}
 
@@ -28,12 +28,8 @@ public class ArtigoController{
         
         ModelAndView modelAndView = new ModelAndView("artigo");
 
-        Artigo artigo = artigoRepository.findOne(id);
-        
-//        List<Comentario> comentarios = comentarioRepository.findComentarioByIdArtigo(id); // id do artigo
-//        artigo.setComentarios(comentarios);
-
-        Usuario usuario = usuarioRepository.findOne(Integer.parseInt(artigo.getId_user()));
+        Artigo artigo = artigosCache.getArtigo(id);
+        Usuario usuario = usuarioCache.getUsuario(Integer.parseInt(artigo.getId_user()));
         
         modelAndView.addObject("artigo", artigo);
         modelAndView.addObject("escritor", usuario);
