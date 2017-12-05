@@ -1,6 +1,8 @@
 package com.bookcase.controller;
 
+import com.bookcase.model.Comentario;
 import com.bookcase.repository.ArtigoRepository;
+import com.bookcase.repository.ComentarioRepository;
 import com.bookcase.repository.UsuarioRepositoryRedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import com.bookcase.model.Artigo;
 import com.bookcase.model.Usuario;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class ArtigoController{
@@ -25,6 +28,8 @@ public class ArtigoController{
     private UsuarioCache usuarioCache;
     @Autowired
     private ArtigoRepository artigoRepository;
+    @Autowired
+    private ComentarioRepository comentarioRepository;
 
     private UsuarioRepositoryRedis usuarioRepositoryRedis;
 
@@ -48,12 +53,23 @@ public class ArtigoController{
         return modelAndView;
     }
 
-    @RequestMapping(value = "excluir-artigo", method = RequestMethod.GET)
-    public ModelAndView editarArtigo(@RequestParam(value="id", required=false) String id){
-
+    @RequestMapping(value="efetuar-update-artigo", method = RequestMethod.POST)
+    public ModelAndView editarArtigo(Artigo artigo, HttpSession session){
         ModelAndView modelAndView = new ModelAndView("redirect:usuario");
-        this.artigoRepository.delete(id);
-        return modelAndView;
+        try {
+            this.artigoRepository.save(artigo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return  modelAndView;
+    }
+    @RequestMapping(value = "excluir-artigo", method = RequestMethod.GET)
+    String editarArtigo(@RequestParam(value="id", required=false) String id){
+        this.artigoRepository.delete(id); // deleto o artigo
+        List<Comentario> l = this.comentarioRepository.findComentarioByArtigo(id); // pego os comentarios deste artigo
+        for(Comentario c : l)
+            this.comentarioRepository.delete(c.getId()); // delete todos os comentarios
+        return "redirect:usuario";
     }
 
 }

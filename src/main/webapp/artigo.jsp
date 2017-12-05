@@ -27,31 +27,39 @@
     <div class="container">
         <!-- dados do artigo -->
         <div class="container div-artigo">
-            <!-- dados do escritor -->
-            <br>
-            <h3 class="text-center">${artigo.titulo}</h3>
-            <br>
-            <div class="resumo text-center">
-                ${artigo.resumo}
+            <div id="form-editar-artigo">
+                <jsp:include page="includes/editar-artigo.jsp"/>
             </div>
-            <br>
-            <div class="texto-artigo">
-                ${artigo.texto}
+            <div id="show-dados-artigo">
+                <!-- dados do escritor -->
+                <br>
+                <h3 class="text-center">${artigo.titulo}</h3>
+                <br>
+                <div class="resumo text-center">
+                    ${artigo.resumo}
+                </div>
+                <br>
+                <div class="texto-artigo">
+                    ${artigo.texto}
+                </div>
+                <br>
+                <div class=" text-right">
+                    <span class="data-artigo">Publicado por <a href="escritor?id=${escritor.id}">${escritor.nome}</a> em ${artigo.data_publicacao}</span><br>
+                    <br>
+                    <c:if test="${ usuario.id == escritor.id}">
+                        <button id="button-editar-artigo" class="btn btn-outline-primary"> EDITAR </button>
+                        <a href="excluir-artigo?id=${artigo.id}" class="btn btn-outline-danger">EXCLUIR </a>
+                    </c:if>
+                </div>
+                <br>
             </div>
-            <br>
-            <div class=" text-right">
-                <span class="data-artigo">Publicado por <a href="escritor?id=${escritor.id}">${escritor.nome}</a> em ${artigo.data_publicacao}</span><br>
-                <c:if test="${ usuario.id == escritor.id}">
-                    <a class="nav-link" href="excluir-artigo?id=${artigo.id}"> EXCLUIR </a>
-                </c:if>
-            </div>
-            <br>
+
         </div>
         <br>
         <hr>
         <br>
         <!-- comentarios -->
-        <div class="container">
+        <div id="comentarios" class="container">
             <!-- FORMULARIO RESPOSTA -->
             <div>
                 <form>
@@ -107,6 +115,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
+<%----%>
+<script src="js/PageVisualizarArtigo.js"></script>
 </body>
 
 </html>
