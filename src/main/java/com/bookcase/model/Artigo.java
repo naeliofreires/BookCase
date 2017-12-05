@@ -14,7 +14,7 @@ public class Artigo implements Serializable{
 	@Id
     private String id;
     @NotNull
-    private String id_user;
+    private String userID;
     @NotNull
     private String nome_autor;
     @NotNull
@@ -32,6 +32,20 @@ public class Artigo implements Serializable{
         this.id = id;
     }
 
+    public Artigo(String id, String userID, String nome_autor, String titulo, String resumo, String texto, String data_publicacao) {
+        this.id = id;
+        this.userID = userID;
+        this.nome_autor = nome_autor;
+        this.titulo = titulo;
+        this.resumo = resumo;
+        this.texto = texto;
+        this.data_publicacao = data_publicacao;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getId() {
         return id;
     }
@@ -40,12 +54,12 @@ public class Artigo implements Serializable{
         this.id = id;
     }
 
-    public String getId_user() {
-        return id_user;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setId_user(String id_user) {
-        this.id_user = id_user;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getNome_autor() {

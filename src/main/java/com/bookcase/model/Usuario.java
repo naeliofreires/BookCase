@@ -1,90 +1,83 @@
 package com.bookcase.model;
 
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity()
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_USUARIO", nullable=false)
-    private Integer id;
-    private String nome;
-    private String email;
-    private String senha;
 
-    @Transient
-    private Collection<Usuario> quem_sigo;
-    @Transient
-    private Collection<Usuario> quem_me_segue;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID_USUARIO", nullable=false)
+	private Integer id;
+	private String nome;
+	private String email;
+	private String senha;
+	private String trabalho;
 
     public Usuario() { }
 
-
-    public Usuario(String nome, String email, String senha) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
+    public Usuario(Integer id, String nome, String email, String trabalho) {
+		this.id = id;
+	    this.nome = nome;
+		this.email = email;
+		this.trabalho = trabalho;
+	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public Usuario(String nome, String email, String senha, Collection<Usuario> quem_sigo, Collection<Usuario> quem_me_segue) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.quem_sigo = quem_sigo;
-        this.quem_me_segue = quem_me_segue;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+	public String getNome() {
+		return nome;
+	}
 
     public void setNome(String nome) {
-        this.nome = nome;
-    }
+		this.nome = nome;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
+	public String getSenha() {
+		return senha;
+	}
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public String getTrabalho() {
+		return trabalho;
+	}
 
-    public Collection<Usuario> getQuem_sigo() {
-        return quem_sigo;
-    }
+	public void setTrabalho(String trabalho) {
+		this.trabalho = trabalho;
+	}
 
-    public void setQuem_sigo(Collection<Usuario> quem_sigo) {
-        this.quem_sigo = quem_sigo;
-    }
-
-    public Collection<Usuario> getQuem_me_segue() {
-        return quem_me_segue;
-    }
-
-    public void setQuem_me_segue(Collection<Usuario> quem_me_segue) {
-        this.quem_me_segue = quem_me_segue;
-    }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package com.bookcase.controller;
 
+import com.bookcase.repository.ArtigoRepository;
+import com.bookcase.repository.UsuarioRepositoryRedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,28 +14,46 @@ import com.bookcase.cache.UsuarioCache;
 import com.bookcase.model.Artigo;
 import com.bookcase.model.Usuario;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class ArtigoController{
 
 	@Autowired
 	private ArtigosCache artigosCache;
-    
     @Autowired
     private UsuarioCache usuarioCache;
-    
-    ArtigoController(){}
+    @Autowired
+    private ArtigoRepository artigoRepository;
+
+    private UsuarioRepositoryRedis usuarioRepositoryRedis;
+
+    ArtigoController(){
+        this.usuarioRepositoryRedis = new UsuarioRepositoryRedis();
+    }
 
     @RequestMapping(value = "ler-artigo", method = RequestMethod.GET)
-    public ModelAndView lerArtigo(@RequestParam(value="id", required=false) String id){
-        
-        ModelAndView modelAndView = new ModelAndView("artigo");
+    public ModelAndView lerArtigo(@RequestParam(value="id", required=false) String id, HttpSession session){
 
+        ModelAndView modelAndView = new ModelAndView("artigo");
         Artigo artigo = artigosCache.getArtigo(id);
-        Usuario usuario = usuarioCache.getUsuario(Integer.parseInt(artigo.getId_user()));
-        
+
+        Usuario usuario = this.usuarioRepositoryRedis.getUsuario(session.getId());
+
+        Usuario escritor = usuarioCache.getUsuario(Integer.parseInt(artigo.getUserID()));
+
         modelAndView.addObject("artigo", artigo);
-        modelAndView.addObject("escritor", usuario);
-        
+        modelAndView.addObject("usuario", usuario);
+        modelAndView.addObject("escritor", escritor);
         return modelAndView;
     }
+
+    @RequestMapping(value = "excluir-artigo", method = RequestMethod.GET)
+    public ModelAndView editarArtigo(@RequestParam(value="id", required=false) String id){
+
+        ModelAndView modelAndView = new ModelAndView("redirect:usuario");
+        this.artigoRepository.delete(id);
+        return modelAndView;
+    }
+
 }

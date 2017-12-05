@@ -1,0 +1,14 @@
+.container-escritor{
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.artigos-escritor{
+    margin: 0 auto;
+}
+
+.card-style{
+    padding: 20px;
+}

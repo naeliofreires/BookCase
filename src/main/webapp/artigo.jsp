@@ -12,6 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/corpo-aplicacao.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -22,39 +23,28 @@
 <hr>
 
 <div class="container" ng-controller="comentarioController">
-    <!-- dados do escritor -->
-    <h5>Escritor:
-        <span>${escritor.nome}</span>
-    </h5>
-    <h6>Contato:
-        <span>${escritor.email}</span>
-    </h6>
-
-
+   
     <div class="container">
         <!-- dados do artigo -->
         <div class="container div-artigo">
-
+            <!-- dados do escritor -->
             <br>
             <h3 class="text-center">${artigo.titulo}</h3>
             <br>
-
             <div class="resumo text-center">
                 ${artigo.resumo}
             </div>
-
             <br>
-
             <div class="texto-artigo">
                 ${artigo.texto}
             </div>
-
             <br>
-
             <div class=" text-right">
-                <span class="data-artigo">Publicado: ${artigo.data_publicacao}</span>
+                <span class="data-artigo">Publicado por <a href="escritor?id=${escritor.id}">${escritor.nome}</a> em ${artigo.data_publicacao}</span><br>
+                <c:if test="${ usuario.id == escritor.id}">
+                    <a class="nav-link" href="excluir-artigo?id=${artigo.id}"> EXCLUIR </a>
+                </c:if>
             </div>
-
             <br>
         </div>
         <br>
@@ -62,15 +52,12 @@
         <br>
         <!-- comentarios -->
         <div class="container">
-
-
             <!-- FORMULARIO RESPOSTA -->
             <div>
                 <form>
                     <input id="userID" value="${escritor.id}" hidden="true">
                     <input id="artigoID" value="${artigo.id}" hidden="true">
-                    <input id="escritorNome" value="${usuario.nome}" hidden="true">
-                    <c:if test="${ usuario != null}">
+                    <c:if test="${ logado == true}">
                         <input ng-model="comentario" type="text" class="form-control"
                                placeholder="Escreva o que achou...">
                         <span class="input-group-btn">
@@ -90,7 +77,7 @@
                 <div ng-repeat="comentario in comentarios">
                     <div id="comentario-style" class="container">
                         <div id="comentario-caixa" class="container">
-                            <h6 id="tituloComentario">{{comentario.nomeEscritor}}</h6>
+                            <h6 id="tituloComentario">{{comentario.escritor}}</h6>
                             <p id="tDextoComentario">{{comentario.texto}}</p>
                         </div>
                     </div>

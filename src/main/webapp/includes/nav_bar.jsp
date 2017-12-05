@@ -14,14 +14,21 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Página Inicial <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Olá ${usuario.nome}</a>
+            <li>
+                <c:if test="${ logado == null}">
+                    <a class="nav-link disabled" href="#">Seja Bem Vindo!</a>
+                </c:if>
+            </li>
+            <li>
+                <c:if test="${ logado != null}">
+                    <a style="color: blue" class="nav-link" href="usuario">Meu Perfil</a>
+                </c:if>
             </li>
         </ul>
 
-        <%--SE USUARIO N ESTIVER LOGADO, APARECER OPÇÕES DE LOGIN E CADASTRO--%>
+        <%--SE USUARIO ESTIVER LOGADO, APARECER OPÇÃO DESLOGAR--%>
         <c:choose>
-            <c:when test="${ usuario != null}">
+            <c:when test="${ logado != null}">
                 <a href="deslogar">Sign out</a>
             </c:when>
             <c:otherwise>

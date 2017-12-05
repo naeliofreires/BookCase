@@ -18,6 +18,13 @@
     color: black;
 }
 
+.container-artigos-index{
+    width: 700px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 #comentario-style{
     border: 1px solid;
     border-radius: 10px;

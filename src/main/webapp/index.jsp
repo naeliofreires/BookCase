@@ -11,6 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/corpo-aplicacao.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -26,10 +27,10 @@
     </div>
 </c:if>
 
-<div ng-controller="artigoController">
+<div class="container-artigos-index" ng-controller="artigoController">
 
 
-    <c:if test="${ usuario != null}">
+    <c:if test="${ logado != null}">
         <%--FORMULARIO PARA POSTAR ARTIGO--%>
         <div class="container text-center">
             <h4 class="text-center">{{aplicacao}}</h4>
@@ -39,7 +40,7 @@
                 <textarea ng-model="artigo.texto" class="form-control" placeholder="Digite algo aqui.."> </textarea>
                 <br>
                 <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block">
-                    Postar Artigo
+                    PUBLICAR ARTIGO
                 </button>
 
             </form>
@@ -48,16 +49,21 @@
 
     <br><br>
 
-    <div class="row container" style="margin: 0 auto;">
+    <span>TODOS OS ARTIGOS PUBLICADOS</span><br><br>
+    <div style="margin: 0 auto;" class="artigos-escritor container row">
         <div ng-repeat="artigo in artigos">
-                <div class="card container " style="width: 20rem; margin: 25px">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">{{artigo.titulo}}</h4>
+            <div class="card-style col-12">
+                <div class="card">
+                    <div class="card-block">
+                        <h4 class="card-title">{{artigo.titulo}}</h4>
+                        <span>Resumo:</span>
                         <p class="card-text">{{artigo.resumo}}</p>
-                        <h6 class="card-subtitle mb-2 text-muted">{{artigo.nome_autor}} {{artigo.data_publicacao}}</h6>
-                        <a href="ler-artigo?id={{artigo.id}}" class="card-link">ler artigo</a>
+                        <a href="ler-artigo?id={{artigo.id}}" class="btn btn-outline-primary">Visualizar</a>
                     </div>
                 </div>
+            </div>
+            <br>
+            <hr>
         </div>
     </div>
 </div>

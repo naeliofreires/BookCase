@@ -1,5 +1,6 @@
 package com.bookcase.configuration;
 
+import com.google.common.collect.Sets;
 import org.apache.catalina.connector.Connector;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,14 +8,11 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 
-import com.google.common.collect.Sets;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class EmbeddedTomcatConfiguration {
-
     @Value("${server.port}")
     private String serverPort;
 

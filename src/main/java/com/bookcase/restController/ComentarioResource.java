@@ -3,6 +3,7 @@ package com.bookcase.restController;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bookcase.repository.UsuarioRepositoryRedis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +16,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookcase.model.Comentario;
 import com.bookcase.repository.ComentarioRepository;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class ComentarioResource {
 
     @Autowired
     ComentarioRepository comentarioRepository;
 
-    public ComentarioResource() { }
+    UsuarioRepositoryRedis usuarioRepositoryRedis;
+    public ComentarioResource() {
+        this.usuarioRepositoryRedis = new UsuarioRepositoryRedis();
+    }
 
     /** adicionar comentario**/
     @RequestMapping(value="/comentario", method = RequestMethod.POST, produces="application/json")
-    public void adicionarComentario(@RequestBody Comentario comentario){
-        System.out.println(comentario.toString());
+    public void adicionarComentario(HttpSession session, @RequestBody Comentario comentario){
+        System.out.println(this.usuarioRepositoryRedis.getUsuario(session.getId()).getNome());
+        comentario.setEscritor(this.usuarioRepositoryRedis.getUsuario(session.getId()).getNome());
         comentarioRepository.save(comentario);
     }
 

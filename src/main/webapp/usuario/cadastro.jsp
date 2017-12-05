@@ -1,16 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: naelio
-  Date: 10/11/17
-  Time: 09:51
-  To change this template use File | Settings | File Templates.
---%>
+
 <html>
 <head>
     <title>BookCase</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/corpo-aplicacao.css">
 </head>
 <body>
 <%--NAV BAR--%>
@@ -59,6 +54,12 @@
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="trabalho" class="col-sm-2 col-form-label">Profissão</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="trabalho" name="trabalho" placeholder="Trabalho">
             </div>
         </div>
         <div class="form-group row">

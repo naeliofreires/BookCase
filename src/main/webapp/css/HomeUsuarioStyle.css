@@ -1,0 +1,27 @@
+.container-dados{
+	padding-top: 20px;
+	margin: 0 auto;
+}
+.container-dados-usuario{
+	color:black;
+	font-style: italic;
+	font-style: oblique;	
+}
+/* meus artigos */
+
+.meus-artigos-container{
+	width: 700px;
+	height: 400px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.dados-usuario{
+    font-size: 20px;
+    font-style: oblique;
+    color: black;
+}
+span{
+	font-family: "Bitstream Charter";
+    color: cadetblue;
+}
