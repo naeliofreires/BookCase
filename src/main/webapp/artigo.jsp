@@ -77,7 +77,6 @@
                 </form>
             </div>
 
-
             <br><h6>Comentarios:</h6><br>
 
             <%--TODOS OS COMENTARIOS DO ARTIGO EXISTENTE--%>
@@ -85,8 +84,12 @@
                 <div ng-repeat="comentario in comentarios">
                     <div id="comentario-style" class="container">
                         <div id="comentario-caixa" class="container">
-                            <h6 id="tituloComentario">{{comentario.escritor}}</h6>
-                            <p id="tDextoComentario">{{comentario.texto}}</p>
+                            <h6 id="tituloComentario">{{comentario.nomeEscritor}}</h6>
+                            <p id="textoComentario">{{comentario.texto}}</p>
+                            <div ng-show="${usuario.id}=={{comentario.escritor}}">
+                                <input  id="comentarioExcluir" value="{{comentario.id}}" type="text" hidden="true">
+                                <button ng-click="deletarComentario()" type="button" class="btn btn-outline-warning">DELETAR</button><br>
+                            </div>
                         </div>
                     </div>
                     <br>

@@ -70,10 +70,21 @@ angular.module("bookCase").controller("comentarioController", function ($scope, 
 				}
 		);
 	};
-
+    
+	$scope.deletarComentario = function () {
+	    var idComentarioExcluir = $('#comentarioExcluir').val();
+        comentarioAPI.deletarComentario(idComentarioExcluir)
+        .then(
+            function (response) {
+                alert("Comentario Excluido!");
+                getComentariosArtigo($("#artigoID").val()); // recarregando os comentarios
+            }, function (response) {
+                console.log("[deletarComentario] Response: " + response);
+            }
+        );
+    };
 
 	/** CHAMADA DE FUNÇÕES **/
-
 	getComentariosArtigo($("#artigoID").val());
 
 });

@@ -35,8 +35,11 @@
         <div class="container text-center">
             <h4 class="text-center">{{aplicacao}}</h4>
             <form class="container form-group">
+                <br>
                 <input ng-model="artigo.titulo" type="text" class="form-control" placeholder="Titulo">
+                <br>
                 <input ng-model="artigo.resumo" type="text" class="form-control" placeholder="Resumo" maxlength="100">
+                <br>
                 <textarea ng-model="artigo.texto" class="form-control" placeholder="Digite algo aqui.."> </textarea>
                 <br>
                 <button ng-click="adicionarArtigo(artigo)" class="btn btn-success btn-block">

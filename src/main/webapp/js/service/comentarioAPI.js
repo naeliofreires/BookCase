@@ -1,17 +1,18 @@
 angular.module("bookCase").service("comentarioAPI", function ($http, $location) {
 
-    // adicionar um comentario
+    /** ADICIONAR NOVO COMENTARIO **/
     this.adicionar_comentario = function (comentario) {
-        return $http.post($location.protocol() + "://" +location.host + "/comentario", comentario);
+        return $http.post($location.protocol() + "://" + location.host + "/comentario", comentario);
     };
 
-    // traz todos os comentarios existente
-    this.listarComentarios = function () {
-        return $http.get($location.protocol() + "://" +location.host + "/comentario");
-    };
-
+    /** LISTAR COMENTARIOS ARTIGO**/
     this.listarComentariosArtigo = function (artigoID) {
-        return $http.get($location.protocol() + "://" +location.host + "/comentario/" + artigoID);
+        return $http.get($location.protocol() + "://" + location.host + "/comentario/" + artigoID);
     };
+
+    /** DELETAR UM COMENTARIO DE UM USUARIO**/
+    this.deletarComentario = function (id) {
+        return  $http.delete($location.protocol() + "://" + location.host + "/deletar/comentario/" + id);
+    }
 
 });

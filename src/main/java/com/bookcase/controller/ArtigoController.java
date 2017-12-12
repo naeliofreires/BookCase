@@ -1,6 +1,5 @@
 package com.bookcase.controller;
 
-import com.bookcase.model.Comentario;
 import com.bookcase.repository.ArtigoRepository;
 import com.bookcase.repository.ComentarioRepository;
 import com.bookcase.repository.UsuarioRepositoryRedis;
@@ -17,7 +16,6 @@ import com.bookcase.model.Artigo;
 import com.bookcase.model.Usuario;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class ArtigoController{
@@ -65,10 +63,7 @@ public class ArtigoController{
     }
     @RequestMapping(value = "excluir-artigo", method = RequestMethod.GET)
     String editarArtigo(@RequestParam(value="id", required=false) String id){
-        this.artigoRepository.delete(id); // deleto o artigo
-        List<Comentario> l = this.comentarioRepository.findComentarioByArtigo(id); // pego os comentarios deste artigo
-        for(Comentario c : l)
-            this.comentarioRepository.delete(c.getId()); // delete todos os comentarios
+        this.artigoRepository.delete(id);
         return "redirect:usuario";
     }
 
